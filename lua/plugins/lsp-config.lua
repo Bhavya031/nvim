@@ -49,6 +49,7 @@ return {
 			})
 			lspconfig.clangd.setup({
 				capabilities = capabilities,
+				fallbackFlags = { "--std=c++11" },
 			})
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})

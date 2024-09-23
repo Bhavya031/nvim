@@ -15,7 +15,18 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     lazypath,
   })
 end
+vim.o.tabstop = 4
+vim.o.shiftwidth = 2
+vim.o.expandtab = false
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "cpp",
+  callback = function()
+    vim.keymap.set("i", "<CR>", function()
+      return "\n\t"
+    end, { buffer = true, expr = true })
+  end
+})
 vim.opt.rtp:prepend(lazypath)
 vim.opt.number = true
 vim.opt.relativenumber = true

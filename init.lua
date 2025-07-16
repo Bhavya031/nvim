@@ -30,4 +30,6 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.opt.rtp:prepend(lazypath)
 vim.opt.number = true
 vim.opt.relativenumber = true
+-- Set blinking block cursor only in Visual mode
+vim.opt.guicursor = "n-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:blinkwait0-blinkoff0-blinkon0,v:block-blinkon500-blinkoff500"
 require("lazy").setup("plugins")

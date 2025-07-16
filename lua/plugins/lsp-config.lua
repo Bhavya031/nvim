@@ -26,7 +26,7 @@ return {
 			lspconfig.tailwindcss.setup({
 				capabilities = capabilities,
 			})
-			lspconfig.tsserver.setup({
+			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
 			})
 			lspconfig.jsonls.setup({
@@ -50,6 +50,23 @@ return {
 			lspconfig.clangd.setup({
 				capabilities = capabilities,
 				fallbackFlags = { "--std=c++11" },
+			})
+			lspconfig.jdtls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.rust_analyzer.setup({
+				capabilities = capabilities,
+				-- Optional settings for better experience
+				settings = {
+					["rust-analyzer"] = {
+						cargo = {
+							allFeatures = true,
+						},
+						checkOnSave = {
+							command = "clippy",
+						},
+					},
+				},
 			})
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
